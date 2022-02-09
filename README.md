@@ -31,12 +31,12 @@ Your assignment page on Canvas should contain instructions for submitting this p
 - `validateUser()`
 
   - `validateUser` validates the `body` on a request to create or update a user
-  - if the request `body` lacks the required `name` field, respond with status `400` and `{ message: "missing required name field" }`
+  -X if the request `body` lacks the required `name` field, respond with status `400` and `{ message: "missing required name field" }`
 
 - `validatePost()`
 
   - `validatePost` validates the `body` on a request to create a new post
-  - if the request `body` lacks the required `text` field, respond with status `400` and `{ message: "missing required text field" }`
+  -X if the request `body` lacks the required `text` field, respond with status `400` and `{ message: "missing required text field" }`
 
 ### Database Persistence Helpers
 

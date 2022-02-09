@@ -42,11 +42,20 @@ async function validateUser(req, res, next) {
 }
 
 async function validatePost(req, res, next) {
-    try {
-
-    } catch (err) {
-        next(err)
-    }
+    const { text } = req.body
+        try {
+            if (!text) {
+                next({
+                    status: 400,
+                    message: 'missing required text field'
+                })
+            } else {
+                req.text = text
+                next()
+            }
+        } catch (err) {
+            next(err)
+        }
 }
 
 module.exports = {
