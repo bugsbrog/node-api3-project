@@ -10,16 +10,17 @@ const Posts = require('../posts/posts-model')
 
 const router = express.Router();
 
-router.get('/', async (req, res, next) => {
+router.get('/', logger, async (req, res, next) => {
     try {
-
+        const user = await Users.get()
+        res.json(user)
     } catch (err) {
         next(err)
     }
   // RETURN AN ARRAY WITH ALL THE USERS
 });
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', logger, async (req, res, next) => {
     try {
 
     } catch (err) {
@@ -29,7 +30,7 @@ router.get('/:id', async (req, res, next) => {
   // this needs a middleware to verify user id
 });
 
-router.post('/', async (req, res, next) => {
+router.post('/', logger, async (req, res, next) => {
     try {
 
     } catch (err) {
@@ -39,7 +40,7 @@ router.post('/', async (req, res, next) => {
   // this needs a middleware to check that the request body is valid
 });
 
-router.put('/:id', async (req, res, next) => {
+router.put('/:id', logger, async (req, res, next) => {
     try {
 
     } catch (err) {
@@ -50,7 +51,7 @@ router.put('/:id', async (req, res, next) => {
   // and another middleware to check that the request body is valid
 });
 
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id,', logger, async (req, res, next) => {
     try {
 
     } catch (err) {
@@ -60,7 +61,7 @@ router.delete('/:id', async (req, res, next) => {
   // this needs a middleware to verify user id
 });
 
-router.get('/:id/posts', async (req, res, next) => {
+router.get('/:id/posts', logger, async (req, res, next) => {
     try {
 
     } catch (err) {
@@ -70,7 +71,7 @@ router.get('/:id/posts', async (req, res, next) => {
   // this needs a middleware to verify user id,ext
 });
 
-router.post('/:id/posts', async (req, res, next) => {
+router.post('/:id/posts',logger, async (req, res, next) => {
     try {
 
     } catch (err) {
