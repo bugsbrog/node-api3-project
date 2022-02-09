@@ -11,7 +11,7 @@ Your assignment page on Canvas should contain instructions for submitting this p
 ### Task 2: Minimum Viable Product
 
 -X Wire the application together completing `api/server.js` and `index.js`.
-- Write four custom middleware functions detailed below, in `api/middleware/middleware.js`.
+-X Write four custom middleware functions detailed below, in `api/middleware/middleware.js`.
 - Use the custom middlewares in their appropriate places in the application (specific endpoints, entire routes or globally).
 - There are endpoints in `users-router.js` to retrieve the list of `posts` by a `user` and to store a new `post` for a `user`.
 
