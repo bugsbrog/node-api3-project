@@ -45,10 +45,11 @@ router.put('/:id', logger, validateUserId, validateUser, async (req, res, next) 
         }
 });
 
-router.delete('/:id,', logger, async (req, res, next) => {
+router.delete('/:id', logger, validateUserId, async (req, res, next) => {
     const { id } = req.params
         try {
-
+           await Users.remove(req.params.id)
+            res.json(req.user)
         } catch (err) {
             next(err)
         }
@@ -56,7 +57,7 @@ router.delete('/:id,', logger, async (req, res, next) => {
   // this needs a middleware to verify user id
 });
 
-router.get('/:id/posts', logger, async (req, res, next) => {
+router.get('/:id/posts', logger, validateUserId, async (req, res, next) => {
     try {
 
     } catch (err) {
@@ -66,7 +67,7 @@ router.get('/:id/posts', logger, async (req, res, next) => {
   // this needs a middleware to verify user id,ext
 });
 
-router.post('/:id/posts',logger, async (req, res, next) => {
+router.post('/:id/posts', logger, validateUserId, validatePost, async (req, res, next) => {
     try {
 
     } catch (err) {

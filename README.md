@@ -20,22 +20,22 @@ Your assignment page on Canvas should contain instructions for submitting this p
 - `logger()`
 
   -X `logger` logs to the console the following information about each request: request method, request url, and a timestamp
-  - this middleware runs on every request made to the API
+  -X this middleware runs on every request made to the API
 
 - `validateUserId()`
 
-  - this middleware will be used for all user endpoints that include an `id` parameter in the url (ex: `/api/users/:id` and it should check the database to make sure there is a user with that id.
+  -X this middleware will be used for all user endpoints that include an `id` parameter in the url (ex: `/api/users/:id` and it should check the database to make sure there is a user with that id.
   -X if the `id` parameter is valid, store the user object as `req.user` and allow the request to continue
   -X if the `id` parameter does not match any user id in the database, respond with status `404` and `{ message: "user not found" }`
 
 - `validateUser()`
 
-  - `validateUser` validates the `body` on a request to create or update a user
+  -X `validateUser` validates the `body` on a request to create or update a user
   -X if the request `body` lacks the required `name` field, respond with status `400` and `{ message: "missing required name field" }`
 
 - `validatePost()`
 
-  - `validatePost` validates the `body` on a request to create a new post
+  -X `validatePost` validates the `body` on a request to create a new post
   -X if the request `body` lacks the required `text` field, respond with status `400` and `{ message: "missing required text field" }`
 
 ### Database Persistence Helpers
@@ -44,9 +44,9 @@ There are two helper files that you can use to manage the persistence of _users_
 
 -X `get()`: calling find returns a promise that resolves to an array of all the resources contained in the database.
 -X `getById()`: takes an `id` as the argument and returns a promise that resolves to the resource with that id if found.
-- `insert()`: calling insert passing it a resource object will add it to the database and return the new resource.
-- `update()`: accepts two arguments, the first is the `id` of the resource to update and the second is an object with the `changes` to apply. On success it returns the updated record.
-- `remove()`: the remove method accepts an `id` as it's first parameter and, upon successfully deleting the `resource` from the database, returns the number of records deleted.
+-X `insert()`: calling insert passing it a resource object will add it to the database and return the new resource.
+-X `update()`: accepts two arguments, the first is the `id` of the resource to update and the second is an object with the `changes` to apply. On success it returns the updated record.
+-X `remove()`: the remove method accepts an `id` as it's first parameter and, upon successfully deleting the `resource` from the database, returns the number of records deleted.
 
 The `users-model.js` includes an extra method called `getUserPosts()` that when passed a user's `id`, returns a list of all the `posts` for the `user`.
 
