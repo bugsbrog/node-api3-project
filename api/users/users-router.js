@@ -48,23 +48,22 @@ router.put('/:id', logger, validateUserId, validateUser, async (req, res, next) 
 router.delete('/:id', logger, validateUserId, async (req, res, next) => {
     const { id } = req.params
         try {
-           await Users.remove(req.params.id)
+           await Users.remove(id)
             res.json(req.user)
         } catch (err) {
             next(err)
         }
-  // RETURN THE FRESHLY DELETED USER OBJECT
-  // this needs a middleware to verify user id
 });
 
 router.get('/:id/posts', logger, validateUserId, async (req, res, next) => {
-    try {
-
-    } catch (err) {
-        next(err)
-    }
-  // RETURN THE ARRAY OF USER POSTS
-  // this needs a middleware to verify user id,ext
+    const { id } = req.params
+        try {
+            // Why can't we use res.json(req.user)?
+            const getId = await Users.getUserPosts(id)
+            res.json(getId)
+        } catch (err) {
+            next(err)
+        }
 });
 
 router.post('/:id/posts', logger, validateUserId, validatePost, async (req, res, next) => {
