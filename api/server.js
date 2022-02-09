@@ -17,7 +17,9 @@ server.get('/', logger, (req, res) => {
 server.use((err, req, res, next) => {
   console.log('You done messed up!')
     res.status(err.status || 500).json({
-      message: `THE HORROR: ${err.message}`
+      myMessage: 'There is an oopsie in the users router',
+      message: err.message,
+      stack: err.stack
   })
 })
 

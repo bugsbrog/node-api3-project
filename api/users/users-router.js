@@ -59,6 +59,7 @@ router.get('/:id/posts', logger, validateUserId, async (req, res, next) => {
     const { id } = req.params
         try {
             // Why can't we use res.json(req.user)?
+            // I think we can't use res.json(req.user) because it only returns the user
             const getId = await Users.getUserPosts(id)
             res.json(getId)
         } catch (err) {
@@ -66,12 +67,24 @@ router.get('/:id/posts', logger, validateUserId, async (req, res, next) => {
         }
 });
 
-router.post('/:id/posts', logger, validateUserId, validatePost, async (req, res, next) => {
-    try {
-
-    } catch (err) {
-        next(err)
-    }
+router.post(
+    '/:id/posts',
+    logger,
+    validateUserId,
+    validatePost,
+    async (req, res, next) => {
+    const { id } = req.params
+    const { text } = req.body
+        try {
+            const createPost = await Posts.insert({
+                user_id: id,
+                // Why can't we just do text instead of text: text?
+                text: text
+            })
+            res.status(201).json(createPost)
+        } catch (err) {
+            next(err)
+        }
   // RETURN THE NEWLY CREATED USER POST
   // this needs a middleware to verify user id
   // and another middleware to check that the request body is valid
