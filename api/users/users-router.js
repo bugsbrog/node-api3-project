@@ -85,9 +85,6 @@ router.post(
         } catch (err) {
             next(err)
         }
-  // RETURN THE NEWLY CREATED USER POST
-  // this needs a middleware to verify user id
-  // and another middleware to check that the request body is valid
 });
 
 module.exports = router
