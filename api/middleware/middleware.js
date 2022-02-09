@@ -1,4 +1,4 @@
-const User = require('/api/users/users-model')
+const User = require('../users/users-model')
 
 function logger(req, res, next) {
     console.log(`[${req.method}] ${req.url} ${new Date()}`)

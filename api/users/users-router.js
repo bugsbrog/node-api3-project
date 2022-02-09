@@ -4,7 +4,7 @@ const {
     validateUserId,
     validateUser,
     validatePost
-} = require('/api/middleware/middleware')
+} = require('../middleware/middleware')
 const Users = require('./users-model')
 const Posts = require('../posts/posts-model')
 
