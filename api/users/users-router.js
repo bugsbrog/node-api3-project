@@ -17,17 +17,11 @@ router.get('/', logger, async (req, res, next) => {
     } catch (err) {
         next(err)
     }
-  // RETURN AN ARRAY WITH ALL THE USERS
 });
 
-router.get('/:id', logger, async (req, res, next) => {
-    try {
-
-    } catch (err) {
-        next(err)
-    }
-  // RETURN THE USER OBJECT
-  // this needs a middleware to verify user id
+router.get('/:id', logger, validateUserId, async (req, res, next) => {
+    // since we added req.user = user in mw, we can just do this
+    res.json(req.user)
 });
 
 router.post('/', logger, async (req, res, next) => {
